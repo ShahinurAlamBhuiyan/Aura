@@ -1,11 +1,14 @@
+import { Link } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
+Link
 
 export default function App() {
   return (
     <View style={styles.container}>
       <Text>Welcome to Aura!</Text>
       <StatusBar style="auto" />
+      <Link href="/profile" style={{ color: 'blue' }}>Go to Profile</Link>
     </View>
   )
 }
