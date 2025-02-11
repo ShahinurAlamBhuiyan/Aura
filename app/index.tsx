@@ -4,8 +4,8 @@ import { StyleSheet, Text, View } from "react-native";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Welcome to Aura!</Text>
+    <View className="flex-1 justify-center items-center bg-white">
+      <Text className="text-3xl">Welcome to Aura!</Text>
       <StatusBar style="auto" />
       <Link href="/profile" style={{ color: 'blue' }}>Go to Profile</Link>
     </View>
