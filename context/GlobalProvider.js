@@ -30,7 +30,6 @@ const GlobalProvider = ({ children }) => {
             })
     }, []);
 
-    console.log(user)
     return (
         <GlobalContext.Provider
             value={{
