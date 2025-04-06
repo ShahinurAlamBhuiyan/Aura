@@ -29,7 +29,7 @@ const Home = () => {
                   Welcome Back
                 </Text>
                 <Text className='text-2xl font-psemibold text-white'>
-                  Shahinur Alam
+                  Shahinur Alam Bhuiyan
                 </Text>
               </View>
 
