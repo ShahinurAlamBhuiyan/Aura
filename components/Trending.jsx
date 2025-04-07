@@ -4,8 +4,10 @@ const Trending = ({ posts }) => {
     <FlatList
       data={posts}
       keyExtractor={item => item.$id}
-      renderItem={({ item }) => (
-        <Text className='text-3xl text-white'>{item.id}</Text>
+      renderItem={({ item, index }) => (
+        <Text className='text-3xl text-white' key={index}>
+          {item.id}
+        </Text>
       )}
       horizontal
     />

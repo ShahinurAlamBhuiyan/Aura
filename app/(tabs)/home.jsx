@@ -32,7 +32,7 @@ const Home = () => {
       <FlatList
         data={posts}
         keyExtractor={item => item.$id}
-        renderItem={({ item }) => <VideoCard video={item} />}
+        renderItem={({ item, index }) => <VideoCard key={index} video={item} />}
         ListHeaderComponent={() => (
           <View className='my-6 px-4 space-y-6'>
             <View className='justify-between items-start flex-row mb-6'>
