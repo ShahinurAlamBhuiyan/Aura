@@ -8,6 +8,7 @@ import {
 } from 'react-native'
 import * as Animatable from 'react-native-animatable'
 import { icons } from '../constants'
+import { Video, ResizeMode } from 'expo-av'
 
 const zoomIn = {
   0: {
@@ -36,7 +37,18 @@ const TreadingItem = ({ activeItem, item }) => {
       duration={500}
     >
       {play ? (
-        <Text className='text-white'>Playing</Text>
+        <Video
+          source={{ uri: item.video }}
+          className='w-52 h-72 rounded-[35px] mt-3 bg-white/10'
+          resizeMode={ResizeMode.CONTAIN}
+          useNativeControls
+          shouldPlay
+          onPlaybackStatusUpdate={status => {
+            if (status.didJustFinish) {
+              setPlay(false)
+            }
+          }}
+        />
       ) : (
         <TouchableOpacity
           className='relative justify-center items-center'
