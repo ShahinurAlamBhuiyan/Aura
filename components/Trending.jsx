@@ -1,6 +1,13 @@
 import { useState } from 'react'
-import { Text, FlatList, TouchableOpacity, ImageBackground } from 'react-native'
+import {
+  Text,
+  FlatList,
+  TouchableOpacity,
+  ImageBackground,
+  Image
+} from 'react-native'
 import * as Animatable from 'react-native-animatable'
+import { icons } from '../constants'
 
 const zoomIn = {
   0: {
@@ -40,6 +47,12 @@ const TreadingItem = ({ activeItem, item }) => {
             source={{ uri: item.thumbnail }}
             className='w-52 h-72 rounded-[35px] my-5 overflow-hidden shadow-lg shadow-black/40'
             resizeMode='cover'
+          />
+
+          <Image
+            source={icons.play}
+            className='w-12 h-1/2 absolute'
+            resizeMode='contain'
           />
         </TouchableOpacity>
       )}
