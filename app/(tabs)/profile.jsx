@@ -1,14 +1,14 @@
-import { useEffect } from 'react'
-import { View, Text, FlatList, TouchableOpacity, Image } from 'react-native'
+import { View, FlatList, TouchableOpacity, Image } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import SearchInput from '../../components/SearchInput'
-import EmptyState from '../../components/EmptyState'
-import { getSearchedPosts, getUserPosts } from '../../lib/appwrite'
-import useAppwrite from '../../lib/useAppwrite'
-import VideoCard from '../../components/VideoCard'
-import { useLocalSearchParams } from 'expo-router'
+
 import { useGlobalContext } from '@/context/GlobalProvider'
 import { icons } from '@/constants'
+import { getUserPosts } from '../../lib/appwrite'
+import useAppwrite from '../../lib/useAppwrite'
+
+import VideoCard from '../../components/VideoCard'
+import InfoBox from '../../components/InfoBox'
+import EmptyState from '../../components/EmptyState'
 const Profile = () => {
   const { user, setUser, setIsLoggedIn } = useGlobalContext()
   const { data: posts, refetchData } = useAppwrite(() => getUserPosts(user.$id))
@@ -40,12 +40,32 @@ const Profile = () => {
                 resizeMode='cover'
               />
             </View>
+
+            <InfoBox
+              title={user?.username}
+              containerStyles='mt-5'
+              titleStyles='text-lg'
+            />
+
+            <View className='mt-5 flex-row'>
+              <InfoBox
+                title={posts.length || 0}
+                subtitle='Posts'
+                containerStyles='mr-10'
+                titleStyles='text-xl'
+              />
+              <InfoBox
+                title='1.2k'
+                subtitle='Followers'
+                titleStyles='text-xl'
+              />
+            </View>
           </View>
         )}
         ListEmptyComponent={() => (
           <EmptyState
             title='No videos available'
-            subtitle='No videos found for this search query!'
+            subtitle="Let's upload a video!"
           />
         )}
       />
