@@ -1,13 +1,13 @@
 import { useState } from 'react'
-import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native'
+import { View, TextInput, TouchableOpacity, Image } from 'react-native'
 
 import { icons } from '../constants'
 import { router, usePathname } from 'expo-router'
 import { Alert } from 'react-native'
 
-const SearchInput = () => {
+const SearchInput = ({ initialQuery }) => {
   const pathname = usePathname()
-  const [query, setQuery] = useState('')
+  const [query, setQuery] = useState(initialQuery || '')
 
   return (
     <View className='w-full h-16 px-4 bg-black-100 border-2 border-black-200 rounded-2xl  items-center flex-row focus:border-secondary'>
