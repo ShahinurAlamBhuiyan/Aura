@@ -25,7 +25,6 @@ const zoomOut = {
 
 const TrendingItem = ({ activeItem, item }) => {
   const [play, setPlay] = useState(false)
-  // console.log(item.video)
   return (
     <Animatable.View
       className='mr-5'
@@ -33,18 +32,6 @@ const TrendingItem = ({ activeItem, item }) => {
       duration={500}
     >
       {play ? (
-        // <Video
-        //   source={{ uri: item.video }}
-        //   style={styles.video}
-        //   resizeMode={ResizeMode.CONTAIN}
-        //   useNativeControls
-        //   shouldPlay
-        //   onPlaybackStatusUpdate={status => {
-        //     if (status.didJustFinish) {
-        //       setPlay(false)
-        //     }
-        //   }}
-        // />
         <View className='w-52 h-72 rounded-[33px] mt-3 bg-white/10 overflow-hidden '>
           <WebView
             source={{ uri: item.video }}
