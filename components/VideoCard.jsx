@@ -1,6 +1,8 @@
-import { View, Text, Image, TouchableOpacity } from 'react-native'
+import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native'
 import { icons } from '../constants'
 import { useState } from 'react'
+import { ResizeMode, Video } from 'expo-av'
+import WebView from 'react-native-webview'
 const VideoCard = ({
   video: {
     title,
@@ -38,7 +40,26 @@ const VideoCard = ({
         </View>
       </View>
       {play ? (
-        <Text className='text-white'>Playing</Text>
+        // <Video
+        //   source={{ uri: video }}
+        //   className={styles.video}
+        //   resizeMode={ResizeMode.CONTAIN}
+        //   useNativeControls
+        //   shouldPlay
+        //   onPlaybackStatusUpdate={status => {
+        //     if (status.didJustFinish) {
+        //       setPlay(false)
+        //     }
+        //   }}
+        // />
+        <View className='w-full h-60 rounded-xl mt-3'>
+          <WebView
+            source={{ uri: video }}
+            style={styles.video}
+            allowsFullscreenVideo
+            mediaPlaybackRequiresUserAction={false}
+          />
+        </View>
       ) : (
         <TouchableOpacity
           className='w-full h-60 rounded-xl mt-3 relative justify-center items-center'
@@ -61,3 +82,12 @@ const VideoCard = ({
   )
 }
 export default VideoCard
+
+const styles = StyleSheet.create({
+  video: {
+    width: '100%',
+    height: '240px',
+    borderRadius: '12px',
+    marginTop: '12px'
+  }
+})
