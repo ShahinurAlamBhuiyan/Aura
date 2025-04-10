@@ -3,17 +3,24 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 
 import { useGlobalContext } from '@/context/GlobalProvider'
 import { icons } from '@/constants'
-import { getUserPosts } from '../../lib/appwrite'
+import { getUserPosts, signOut } from '../../lib/appwrite'
 import useAppwrite from '../../lib/useAppwrite'
 
 import VideoCard from '../../components/VideoCard'
 import InfoBox from '../../components/InfoBox'
 import EmptyState from '../../components/EmptyState'
+import { router } from 'expo-router'
 const Profile = () => {
   const { user, setUser, setIsLoggedIn } = useGlobalContext()
-  const { data: posts, refetchData } = useAppwrite(() => getUserPosts(user.$id))
+  const { data: posts } = useAppwrite(() => getUserPosts(user.$id))
 
-  const logout = () => {}
+  const logout = async () => {
+    await signOut()
+    setUser(null)
+    setIsLoggedIn(false)
+
+    router.replace('/sign-in')
+  }
   return (
     <SafeAreaView className='bg-primary h-full'>
       <FlatList
