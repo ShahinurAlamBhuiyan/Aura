@@ -13,7 +13,7 @@ const Search = () => {
   const { data: posts, refetchData } = useAppwrite(() =>
     getSearchedPosts(query)
   )
-  console.log(query, posts)
+
   useEffect(() => {
     refetchData()
   }, [query])

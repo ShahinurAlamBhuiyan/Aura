@@ -23,7 +23,6 @@ const Home = () => {
     await refetchData()
     setRefreshing(false)
   }
-  console.log(user)
   return (
     <SafeAreaView className='bg-primary h-full'>
       <FlatList
