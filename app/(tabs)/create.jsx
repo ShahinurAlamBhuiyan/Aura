@@ -8,7 +8,7 @@ import {
   StyleSheet
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import * as DocumentPicker from 'expo-document-picker'
+import * as ImagePicker from 'expo-image-picker'
 import { router } from 'expo-router'
 import { Video, ResizeMode } from 'expo-av'
 
@@ -32,12 +32,15 @@ const Create = () => {
   })
 
   const openPicker = async selectType => {
-    const result = await DocumentPicker.getDocumentAsync({
-      type:
-        selectType === 'image'
-          ? ['image/png', 'image/jpg']
-          : ['video/mp4', 'video/gif']
+    let result = await ImagePicker.launchImageLibraryAsync({
+      // mediaTypes: ['images', 'videos'],
+      mediaTypes: selectType === 'image' ? 'images' : 'videos',
+      // allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1
     })
+
+    console.log(result)
 
     if (!result.canceled) {
       if (selectType === 'image') {
