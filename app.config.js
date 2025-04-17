@@ -13,6 +13,10 @@ export default {
             APPWRITE_USER_COLLECTION_ID: process.env.APPWRITE_USER_COLLECTION_ID,
             APPWRITE_VIDEO_COLLECTION_ID: process.env.APPWRITE_VIDEO_COLLECTION_ID,
             APPWRITE_STORAGE_ID: process.env.APPWRITE_STORAGE_ID,
+
+            eas: {
+                projectId: "07f118dc-2eb4-4ca2-a613-87842d6f5ceb",
+            },
         },
     },
 }
